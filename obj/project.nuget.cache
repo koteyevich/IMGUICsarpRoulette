@@ -1,0 +1,24 @@
+{
+  "version": 2,
+  "dgSpecHash": "f3fgnbX/uEo=",
+  "success": true,
+  "projectFilePath": "D:\\Files\\Documents\\My Projects\\C# projects\\NumberGeneratorUI\\IMGUI\\IMGUI.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\koteyevich\\.nuget\\packages\\clickabletransparentoverlay\\11.0.1\\clickabletransparentoverlay.11.0.1.nupkg.sha512",
+    "C:\\Users\\koteyevich\\.nuget\\packages\\imgui.net\\1.91.0.1\\imgui.net.1.91.0.1.nupkg.sha512",
+    "C:\\Users\\koteyevich\\.nuget\\packages\\microsoft.win32.systemevents\\9.0.0\\microsoft.win32.systemevents.9.0.0.nupkg.sha512",
+    "C:\\Users\\koteyevich\\.nuget\\packages\\sharpgen.runtime\\2.1.2-beta\\sharpgen.runtime.2.1.2-beta.nupkg.sha512",
+    "C:\\Users\\koteyevich\\.nuget\\packages\\sharpgen.runtime.com\\2.1.2-beta\\sharpgen.runtime.com.2.1.2-beta.nupkg.sha512",
+    "C:\\Users\\koteyevich\\.nuget\\packages\\sixlabors.imagesharp\\3.1.6\\sixlabors.imagesharp.3.1.6.nupkg.sha512",
+    "C:\\Users\\koteyevich\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\koteyevich\\.nuget\\packages\\system.drawing.common\\9.0.0\\system.drawing.common.9.0.0.nupkg.sha512",
+    "C:\\Users\\koteyevich\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\koteyevich\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\koteyevich\\.nuget\\packages\\vortice.d3dcompiler\\3.5.0\\vortice.d3dcompiler.3.5.0.nupkg.sha512",
+    "C:\\Users\\koteyevich\\.nuget\\packages\\vortice.direct3d11\\3.5.0\\vortice.direct3d11.3.5.0.nupkg.sha512",
+    "C:\\Users\\koteyevich\\.nuget\\packages\\vortice.directx\\3.5.0\\vortice.directx.3.5.0.nupkg.sha512",
+    "C:\\Users\\koteyevich\\.nuget\\packages\\vortice.dxgi\\3.5.0\\vortice.dxgi.3.5.0.nupkg.sha512",
+    "C:\\Users\\koteyevich\\.nuget\\packages\\vortice.mathematics\\1.7.8\\vortice.mathematics.1.7.8.nupkg.sha512"
+  ],
+  "logs": []
+}
