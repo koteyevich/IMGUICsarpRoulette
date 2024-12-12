@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("IMGUI")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+536aed11e84a13f72b9957ffb512df42b1e506c1")]
 [assembly: System.Reflection.AssemblyProductAttribute("IMGUI")]
 [assembly: System.Reflection.AssemblyTitleAttribute("IMGUI")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

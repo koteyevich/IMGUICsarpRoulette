@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "f3fgnbX/uEo=",
+  "dgSpecHash": "zHnSLCM8NGo=",
   "success": true,
-  "projectFilePath": "D:\\Files\\Documents\\My Projects\\C# projects\\NumberGeneratorUI\\IMGUI\\IMGUI.csproj",
+  "projectFilePath": "D:\\Files\\Documents\\My Projects\\C# projects\\IMGUICsarpRoulette\\IMGUI.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\koteyevich\\.nuget\\packages\\clickabletransparentoverlay\\11.0.1\\clickabletransparentoverlay.11.0.1.nupkg.sha512",
     "C:\\Users\\koteyevich\\.nuget\\packages\\imgui.net\\1.91.0.1\\imgui.net.1.91.0.1.nupkg.sha512",

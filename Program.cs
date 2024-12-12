@@ -17,30 +17,29 @@ public class Program : Overlay
     // Window
     private bool _isOpen = true;
     private Vector4 _windowColor = new(0.135f, 0.135f, 0.135f, 0.865f);
-    private const int SW_HIDE = 0; // Console Hide
-    private const int SW_SHOW = 5; // Console Show
+    private const int SwHide = 0; // Console Hide
+    private const int SwShow = 5; // Console Show
 
     // Progress Bar
     private float _progress;
-    private readonly float _duration = 5f;
+    private const float Duration = 5f;
     private readonly DateTime _startTime;
     private bool _isLoadingComplete;
 
     // Funny rainbow
-    private readonly float _rainbowCycleSpeed = .5f; // Speed of the rainbow cycling, the smaller the value, the slower
+    private const float RainbowCycleSpeed = .5f; // Speed of the rainbow cycling, the smaller the value, the slower
     private bool _useRainbowColor;
 
     //Fonts
-    private readonly string _arialFontPath = "Fonts\\arial.ttf";
+    private const string ArialFontPath = "Fonts\\arial.ttf";
 
     // The program variables
-    private int _bet = 1;
-    private int _points = 100;
-    private int _onWhat = 1;
+    private int _points;
+    private int _clickMultiplier = 1;
+    private string _result = "";
+    private int _upgradePrice = 100;
 
-    private string result = "Тут буде результат";
-
-    public Program()
+    private Program()
     {
         _startTime = DateTime.Now;
     }
@@ -56,14 +55,13 @@ public class Program : Overlay
     private Vector4 GetRainbowColor(float timeOffset = 0f)
     {
         var time = (float)(DateTime.Now - _startTime).TotalSeconds;
-        var hue = (time * _rainbowCycleSpeed + timeOffset) % 1.0f;
+        var hue = (time * RainbowCycleSpeed + timeOffset) % 1.0f;
 
-        return HSVtoRGB(hue, 1f, 1f); // Full saturation and value
+        return HsVtoRgb(hue, 1f, 1f); // Full saturation and value
     }
 
-
-    // Some magic shit
-    private Vector4 HSVtoRGB(float h, float s, float v)
+    // Some magic sh*t
+    private Vector4 HsVtoRgb(float h, float s, float v)
     {
         var i = (int)(h * 6);
         var f = h * 6 - i;
@@ -92,9 +90,9 @@ public class Program : Overlay
 
         // Finally starting the window
         ImGui.Begin("IMGUI", ref _isOpen, ImGuiWindowFlags.NoCollapse);
-
         Size = new Size(3840, 2160); // This sets up ClickableTransparentOverlay size
-        ReplaceFont(_arialFontPath, 16, FontGlyphRangeType.Cyrillic | FontGlyphRangeType.English);
+        // ReSharper disable once BitwiseOperatorOnEnumWithoutFlags
+        ReplaceFont(ArialFontPath, 16, FontGlyphRangeType.English | FontGlyphRangeType.Cyrillic);
 
         // Fake loading for funnies
         if (!_isLoadingComplete)
@@ -108,7 +106,7 @@ public class Program : Overlay
             ImGui.Dummy(new Vector2(0, yOffset));
 
             var elapsed = (float)(DateTime.Now - _startTime).TotalSeconds;
-            _progress = Math.Clamp(elapsed / _duration, 0f, 1f);
+            _progress = Math.Clamp(elapsed / Duration, 0f, 1f);
 
             var easedProgress = (float)(0.5 - 0.5 * Math.Cos(_progress * Math.PI));
             ImGui.ProgressBar(easedProgress, new Vector2(windowSize.X, progressBarHeight));
@@ -120,44 +118,29 @@ public class Program : Overlay
         {
             if (ImGui.BeginTabItem("Main"))
             {
-                ImGui.SeparatorText("Рулетка!");
+                ImGui.SeparatorText("Клікер!");
                 ImGui.Text($"У вас {_points} балів");
-                ImGui.InputInt("Ставка", ref _bet);
-                ImGui.InputInt("На яке число ставимо (1-6)", ref _onWhat);
-                if (ImGui.Button("Зробити ставку"))
+                if (ImGui.Button("Клік!")) _points+=_clickMultiplier;
+
+                ImGui.Dummy(new Vector2(0, 20));
+
+                if (ImGui.Button($"Збільшити клік (Ціна: {_upgradePrice})"))
                 {
-                    if (_onWhat < 1 || _onWhat > 6)
+                    if (_points >= _upgradePrice)
                     {
-                        result = "Число на яке ми ставемо неможливе";
-                    }
-                    else if (_bet > _points)
-                    {
-                        result = "Недостатньо балів";
-                    }
-                    else if (_bet < 1)
-                    {
-                        result = "Не можна ставити нічого/негативне число!";
+                        _clickMultiplier += 1;
+                        _points -= _upgradePrice;
+                        _upgradePrice = Convert.ToInt32(_upgradePrice * 1.5);
+                        _result = "Апгрейд куплено!";
                     }
                     else
                     {
-                        var win = Random.Shared.Next(1, 6);
-                        _points -= _bet;
-                        if (win == _onWhat)
-                        {
-                            _points += _bet * 3;
-                            result = "Ти виграв!";
-                        }
-                        else
-                        {
-                            result = "Ти програв!";
-                        }
+                        _result = "Недостатньо балів";
                     }
                 }
-
-                ImGui.Dummy(new Vector2(0, 40));
-                ImGui.Text(result);
-
-                if (_points == 0) _isOpen = false;
+                
+                ImGui.Dummy(new Vector2(0, 10));
+                ImGui.Text(_result);
 
                 ImGui.EndTabItem();
             }
@@ -166,6 +149,7 @@ public class Program : Overlay
             {
                 ImGui.Checkbox("ВКЛЮЧИТЬ РАДУГУ!!!", ref _useRainbowColor); // funny
                 if (!_useRainbowColor) ImGui.ColorEdit4("Основной Цвет", ref _windowColor);
+                
                 ImGui.EndTabItem();
             }
 
@@ -176,7 +160,7 @@ public class Program : Overlay
         ImGui.PopStyleColor();
     }
 
-    public void SetupStyling()
+    private void SetupStyling()
     {
         var currentColor = _useRainbowColor ? GetRainbowColor() : _windowColor;
         var textColor = CalculateContrastingColor(currentColor);
@@ -195,16 +179,20 @@ public class Program : Overlay
         ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 2);
         ImGui.PushStyleVar(ImGuiStyleVar.GrabRounding, 2);
         ImGui.PushStyleVar(ImGuiStyleVar.FrameRounding, 1);
+        
+        
     }
 
     public static void Main(string[] args)
     {
         var handle = GetConsoleWindow();
-        ShowWindow(handle, SW_HIDE);
+        ShowWindow(handle, SwHide);
 
         Console.WriteLine("Starting...");
         var program = new Program();
 
         program.Start().Wait();
     }
+    
+    
 }

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Files\\Documents\\My Projects\\C# projects\\NumberGeneratorUI\\IMGUI\\IMGUI.csproj": {}
+    "D:\\Files\\Documents\\My Projects\\C# projects\\IMGUICsarpRoulette\\IMGUI.csproj": {}
   },
   "projects": {
-    "D:\\Files\\Documents\\My Projects\\C# projects\\NumberGeneratorUI\\IMGUI\\IMGUI.csproj": {
+    "D:\\Files\\Documents\\My Projects\\C# projects\\IMGUICsarpRoulette\\IMGUI.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Files\\Documents\\My Projects\\C# projects\\NumberGeneratorUI\\IMGUI\\IMGUI.csproj",
+        "projectUniqueName": "D:\\Files\\Documents\\My Projects\\C# projects\\IMGUICsarpRoulette\\IMGUI.csproj",
         "projectName": "IMGUI",
-        "projectPath": "D:\\Files\\Documents\\My Projects\\C# projects\\NumberGeneratorUI\\IMGUI\\IMGUI.csproj",
+        "projectPath": "D:\\Files\\Documents\\My Projects\\C# projects\\IMGUICsarpRoulette\\IMGUI.csproj",
         "packagesPath": "C:\\Users\\koteyevich\\.nuget\\packages\\",
-        "outputPath": "D:\\Files\\Documents\\My Projects\\C# projects\\NumberGeneratorUI\\IMGUI\\obj\\",
+        "outputPath": "D:\\Files\\Documents\\My Projects\\C# projects\\IMGUICsarpRoulette\\obj\\",
         "projectStyle": "PackageReference",
         "UsingMicrosoftNETSdk": false,
         "configFilePaths": [
